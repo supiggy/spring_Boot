@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form action="/addbook">
+            名字：<input type="text" name="bookname" value="中国共产党史"><br>
+            内容：<input type="text" name="content" value="苦难辉煌……"><br>
+            出版时间：<input type="text" name="publishTime" value="2019-12-25"><br>
+            <input type="submit" value="提交">
+        </form>
+
+
+        <a href="/arrp?id=6&id=8&id=9&id=25">1个参数多个值</a> <br>
+        <a href="/mapparams?id=6&name=hkx&xq=1&xq=2&xq=3">多个参数</a> <br>
+        <hr>
+        <hr>
+        <hr>
+
+
+
+
+        <form action="/addBooks">
+            名字1: <input type="text"     name="books[0].bookname"        value="中国共产党史">
+            内容1: <input type="text"     name="books[0].content"         value="苦难辉煌..........">
+            出版时间1: <input type="text" name="books[0].publishTime"       value="2019-12-25">
+
+            <br>
+            名字2: <input type="text"     name="books[1].bookname"  value="过敏党史">
+            内容2: <input type="text"     name="books[1].content"   value="辉煌的腐败..........">
+            出版时间2: <input type="text"   name="books[1].publishTime" value="2019-12-25">
+
+            <br>
+
+            名字3: <input type="text"           name="books[2].bookname"     value="中华人民共和国简史">
+            内容3: <input type="text"           name="books[2].content"     value="当今最牛B">
+            出版时间3: <input type="text"         name="books[2].publishTime"        value="2019-12-25">
+
+            <br>
+
+            <input type="submit" value="提交">
+        </form>
+    </body>
+
+</html>

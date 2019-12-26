@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>演示Thymeleaf的使用</title>
+        <link rel="stylesheet" href="css/index.css" th:href="@{/css/index.css}">
+    </head>
+    <body>
+        <hr>
+        <span style="color: orangered" th:text="${msg}?: 'uuuuuuuuuuuu'">这是美工转移后显示</span>
+        <br>
+        [[${msg}]]
+        <hr>
+        <br>
+        <span style="color: orangered" th:utext="${msg} ?:'默认的内容,有点类似三目运算'">这是美工不转义</span>
+        <br>
+        [(${msg})]
+        <hr>
+        <hr>
+        <div th:object="${book}">
+            展示一书本的内容:
+            <div th:text="*{id}"></div>
+            <div th:text="*{bookname}"></div>
+            <div th:text="${'这的确是一个'+book.content+'无聊的语法'}"></div>
+        </div>
+        <hr>
+        图书列表
+        <table border="1">
+            <tr>
+                <th>序号</th>
+                <th>书名</th>
+                <th>主要内容</th>
+            </tr>
+            <tr th:each="eachbook,status : ${books} " th:class="${status.even}?'even':'odd'">
+                <td th:text="${status.count}">1</td>
+                <td th:text="${eachbook.bookname}">中国万岁</td>
+                <td th:text="${eachbook.content}">我爱我的祖国</td>
+            </tr>
+        </table>
+        <hr>
+
+        <a href="#" th:href="@{/getbook(id=1,name='中文参数')}">连接测试</a>
+        <hr>
+
+        <span th:text="${#dates.format(now, 'dd/MM/yyyy HH:mm')}">显示当前时间 2019-12-26 14:45:54</span>
+
+        <hr>
+        <span th:text="'你好sadsadsad手打'"></span>
+
+        <hr>
+        <div th:with="haha='我笑的很开心,哈哈哈'">
+            <span th:text="${haha}"></span>
+        </div>
+
+        <div class="red" th:classappend="${classA}">
+            今天天气不错,我们下午没有课!!
+        </div>
+        <hr>
+        <form action="#" th:heihei="@{/fn1}" th:action="@{/fn1}">
+            <input type="text">
+
+        </form>
+
+</html>

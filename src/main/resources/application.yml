@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url:  jdbc:mysql://127.0.0.1:3306/mybatisdemo?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+
+
+  http:
+    encoding:
+      charset: UTF-8
+  mvc:
+    date-format: yyyy-MM-dd
+
+# 服务器设置
+server:
+  port: 8585
+
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+
+
+
+logging:
+  level:
+    com.scu.demo.mapper: debug

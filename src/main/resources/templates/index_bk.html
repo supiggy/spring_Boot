@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <a href="/getbook?id=2">查询一本书</a>
+        <br>
+        <button id="mybtn">点击通过ajax 发送请求获取数据</button>
+        <hr>
+        <div id="showDiv"></div>
+    </body>
+    <script>
+        (function () {
+            var btn = document.getElementById("mybtn");
+            var divShow = document.getElementById("showDiv");
+            btn.onclick=function (ev) {
+                //1.获取XMLHTTPREQUEST
+                var xmlhttp;
+                if(window.XMLHttpRequest){
+                    xmlhttp = new XMLHttpRequest();
+                }else {//for IE5  IE6
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //2.定义回调函数 0   1   2   3   4
+                xmlhttp.onreadystatechange=function () {
+                    //5.处理返回的数据
+                    if(xmlhttp.readyState==4){
+                        if (xmlhttp.status==200){
+                            var text = xmlhttp.responseText;
+                            var obj = JSON.parse(text);
+                            divShow.innerText=obj["id"]+"\n"+obj["bookname"]+"\n"+obj.content;
+                        }else {
+                            divShow.innerText="服务器发送异常";
+                        }
+                    }
+                }
+
+                //3.打开
+                var url = "/test?id=2"
+                xmlhttp.open("GET",url,true);//true 表示异步,false 表示同步
+                //4.发送请求
+                xmlhttp.send(null);
+
+                console.info("========================================"+Math.random())
+                console.info("一段无聊的代码演示同步和异步的概念"+Math.random())
+                console.info("========================================"+Math.random())
+            }
+        })();
+    </script>
+</html>
